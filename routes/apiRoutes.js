@@ -8,6 +8,7 @@ const { getBalanceTransaction } = require (path.resolve (__dirname, '..', 'contr
 const { listAllBalanceTransactions } = require (path.resolve (__dirname, '..', 'controllers', 'listAllBalanceTransactions'));
 const { createCharge } = require (path.resolve (__dirname, '..', 'controllers', 'createCharge'));
 const { retrieveCharge } = require (path.resolve (__dirname, '..', 'controllers', 'retrieveCharge'));
+const { listAllCharges } = require (path.resolve (__dirname, '..',  'controllers', 'listAllCharges'));
 const { createSource } = require (path.resolve (__dirname,  '..', 'controllers', 'createSource'));
 const { getSource } = require (path.resolve (__dirname, '..', 'controllers', 'getSource'));
 const { updateSource } = require (path.resolve (__dirname, '..', 'controllers', 'updateSource'));
@@ -26,6 +27,9 @@ apiRoutes.post ('/createCharge', createCharge);
 
 // retrieving a charge
 apiRoutes.get ('/retrieveCharge/:chargeID', retrieveCharge);
+
+// list all charges
+apiRoutes.get ('/listAllCharges', listAllCharges);
 
 // creating a source
 apiRoutes.post ('/createSource', createSource);

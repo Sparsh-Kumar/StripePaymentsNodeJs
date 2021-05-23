@@ -1,5 +1,8 @@
 
 
+// IMPORTANT ERROR - The reusable source you provided is consumed because it was previously charged without being attached to a customer or was detached from a customer.
+// To charge a reusable source multiple time you must attach it to a customer first.
+
 // importing all the dependencies
 const Stripe = require ('stripe');
 const stripe = Stripe (process.env.STRIPE_SECRET_KEY);
