@@ -15,8 +15,37 @@ const createCharge = async (req, res) => {
     try {
         
         const { amount, currency, source, description } = _.pick (req.body, ['amount', 'currency', 'source', 'description']);
+        if (!amount || !currency || !source || !description) {
+            throw new Error ('please enter all required fields');
+        }
+
+        // if all fields are there then creating a charge
+        stripe.charges.create ({
+            
+            amount,
+            currency,
+            source, // please create the source using source endpoint before creating the charge as (source or token required to create a charge)
+            description
+
+        }).then ((charge) => {
+
+            return res.status (200).send ({
+                status: 'success',
+                charge
+            })
+
+        }).catch ((error) => {
+
+            // catching and returning the error
+            return res.status (401).send ({
+                status: 'failure',
+                message: error.message
+            })
+        })
 
     } catch (error) {
+
+        // catching and returning the error
         return res.status (401).send ({
             status: 'failure',
             message: error.message
