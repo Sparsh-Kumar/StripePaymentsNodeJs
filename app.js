@@ -16,8 +16,11 @@ const { apiRoutes } = require (path.resolve (__dirname, 'routes', 'apiRoutes'));
 // making the database Connection
 
 mongoose.Promise = global.Promise;
-mongoose.connect (process.env.DATABASE_URL).then (() => {
-    console.log (`Connected : ${process.env.DATABASE_URL}`);
+
+mongoose.connect (process.env.MONGO_DATABASE_URL, {
+    useUnifiedTopology: true 
+}).then (() => {
+    console.log (`Connected : ${process.env.MONGO_DATABASE_URL}`);
 }).catch ((error) => {
     console.log (`Error: ${error.message}`);
 })
